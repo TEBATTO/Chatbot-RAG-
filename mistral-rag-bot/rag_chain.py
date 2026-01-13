@@ -7,21 +7,35 @@ from langchain_mistralai import ChatMistralAI
 from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 from langchain_classic.chains.retrieval import create_retrieval_chain
 from langchain_core.prompts import ChatPromptTemplate
-from functools import lru_cache  # ← Ajout crucial pour le cache
+from functools import lru_cache  # Ajout crucial pour le cache
+from pathlib import Path
+from build_vectorstore import build_vectorstore
 import os
 
 load_dotenv()
 
 # Configuration
 VECTORSTORE_DIR = "vectorstores/extended"
+
+LOCK_FILE = Path("vectorstore.lock")
+
+if not Path(VECTORSTORE_DIR).exists() and not LOCK_FILE.exists():
+    LOCK_FILE.touch()
+    print("📦 Vectorstore absent → reconstruction")
+    build_vectorstore(
+        data_dir="data/extended",
+        persist_dir=VECTORSTORE_DIR
+    )
+    LOCK_FILE.unlink()
+
 EMBEDDING_MODEL = "intfloat/multilingual-e5-large"
 
-# Option rapide recommandée (à tester) :
 # Décommente la ligne ci-dessous pour passer à un modèle Mistral plus rapide
-# MODEL_NAME = "open-mistral-nemo"  # Très rapide, excellente qualité, gratuit
-MODEL_NAME = "mistral-large-latest"  # Qualité maximale (actuel)
+# MODEL_NAME = "open-mistral-nemo"  # Très rapide, excellente qualité
+MODEL_NAME = "mistral-large-latest"  # Qualité maximale
 
-@lru_cache(maxsize=1)  # ← LA plus grosse optimisation : tout est chargé une seule fois
+# LA plus grosse optimisation : tout est chargé une seule fois
+@lru_cache(maxsize=1)
 def get_rag_chain():
     print("🔄 Chargement du RAG chain (première fois seulement)...")
 

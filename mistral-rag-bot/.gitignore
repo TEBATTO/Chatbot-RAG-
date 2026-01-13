@@ -1,0 +1,32 @@
+# ===== Sécurité =====
+.env
+.env.*
+
+# ===== Vectorstores / Chroma =====
+vectorstores/
+vectorstore/
+*.sqlite3
+
+# ===== HuggingFace / Transformers =====
+.cache/
+**/.cache/
+
+# ===== Python =====
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ===== Virtual environments =====
+venv/
+.venv/
+env/
+rag_mistral/
+rag310/
+
+# ===== Logs =====
+*.log
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
