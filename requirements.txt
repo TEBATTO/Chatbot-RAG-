@@ -1,16 +1,18 @@
-fastapi==0.110.0
-uvicorn==0.27.1
-pydantic==2.6.1
-python-dotenv==1.0.1
+run: pip install --upgrade pip
 
-langchain==0.2.14
-langchain-core==0.2.33
-langchain-community==0.2.12
-langchain-huggingface==0.0.3
-langchain-mistralai==0.1.13
+fastapi
+uvicorn
+pydantic
+python-dotenv
 
-chromadb==0.5.5
-sentence-transformers==2.7.0
-huggingface-hub==0.23.2
+langchain
+langchain-core
+langchain-community
+langchain-huggingface
+langchain-mistralai
 
-pypdf==4.2.0
+chromadb
+sentence-transformers
+huggingface-hub
+
+pypdf
