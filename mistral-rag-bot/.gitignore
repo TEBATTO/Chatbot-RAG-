@@ -18,8 +18,11 @@ __pycache__/
 *.pyd
 
 # ===== Virtual environments =====
+1.1.0
+1.2.0
 venv/
 .venv/
+.venv
 env/
 rag_mistral/
 rag310/
@@ -30,3 +33,8 @@ rag310/
 # ===== OS =====
 .DS_Store
 Thumbs.db
+
+# Data & Vectorstores
+data/
+vectorstores/
+conversations/

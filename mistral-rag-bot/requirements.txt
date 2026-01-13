@@ -1,14 +1,26 @@
-langchain
-langchain-community
-langchain-huggingface
-langchain-mistralai
-chromadb
-pypdf
-sentence-transformers
-python-dotenv
-fastapi
-uvicorn
-langchain-core
-huggingface-hub
-pydantic
-# streamlit==1.36.0
+# LangChain core stack
+langchain==0.2.11
+langchain-community==0.2.6
+langchain-huggingface==0.1.2
+langchain-core==0.2.38
+langchain-mistralai==0.1.6
+
+# Vector database
+chromadb==0.5.3
+pypdf==4.3.1
+
+# Embeddings / NLP
+sentence-transformers==2.6.1
+huggingface-hub==0.23.2
+pypdf==4.2.0
+
+# API
+python-dotenv==1.0.1
+fastapi==0.111.0
+uvicorn==0.30.1
+streamlit==1.36.0
+pydantic==2.7.4
+
+#langchain==0.2.16
+#langchain-community==0.2.16
+#langchain-mistralai==0.1.7
