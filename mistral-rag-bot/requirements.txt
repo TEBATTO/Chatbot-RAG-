@@ -1,0 +1,14 @@
+langchain
+langchain-community
+langchain-huggingface
+langchain-mistralai
+chromadb
+pypdf
+sentence-transformers
+python-dotenv
+fastapi
+uvicorn
+langchain-core
+huggingface-hub
+pydantic
+# streamlit==1.36.0

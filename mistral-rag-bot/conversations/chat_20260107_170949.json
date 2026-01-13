@@ -1,0 +1,13 @@
+{
+  "id": "chat_20260107_170949",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Qui est Tebatto ?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tebatto Ulrich Iroba est un Data Scientist spécialisé en intelligence artificielle, IA générative, et science des données. Titulaire d’un Master 2 en Mathématiques Appliquées, Statistique parcours Data Science, il possède une expertise solide en programmation (Python), modélisation statistique, et traitement de données à fort impact. Son profil allie compétences techniques et expérience pratique, notamment via des projets concrets et des participations à des hackathons comme celui d’Airbus Helicopters en 2025.\n\nIl maîtrise des outils et méthodes clés : imputation de données, visualisation (boxplot), adaptation de domaine, apprentissage supervisé, et frameworks comme RAG ou LLM. Son approche intègre la préparation des données, la modélisation, et la documentation rigoureuse (Git, Sphinx). Basé en région parisienne, il est ouvert à des collaborations professionnelles dans le domaine de la data et de l’IA."
+    }
+  ]
+}
