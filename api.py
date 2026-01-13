@@ -5,9 +5,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from rag_chain import ask_question
 
-# =========================
+
 # App FastAPI
-# =========================
 app = FastAPI(
     title="Mistral RAG API",
     description="API RAG basée sur Mistral pour le portfolio de Tebatto Ulrich Iroba",

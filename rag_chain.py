@@ -28,10 +28,9 @@ if not Path(VECTORSTORE_DIR).exists() and not LOCK_FILE.exists():
     )
     LOCK_FILE.unlink()
 
-EMBEDDING_MODEL = "intfloat/multilingual-e5-large"
+EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 
 # Décommente la ligne ci-dessous pour passer à un modèle Mistral plus rapide
-# MODEL_NAME = "open-mistral-nemo"  # Très rapide, excellente qualité
 MODEL_NAME = "mistral-large-latest"  # Qualité maximale
 
 # LA plus grosse optimisation : tout est chargé une seule fois
@@ -55,7 +54,7 @@ def get_rag_chain():
     # 3. Retriever optimisé pour la vitesse + pertinence
     retriever = vectorstore.as_retriever(
         search_type="similarity_score_threshold",
-        search_kwargs={"k": 10, "score_threshold": 0.35}  # Plus rapide que k=20
+        search_kwargs={"k": 4, "score_threshold": 0.4}
     )
 
     # 4. LLM Mistral (tu peux tester "open-mistral-nemo" pour + de vitesse)
