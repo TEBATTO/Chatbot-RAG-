@@ -1,5 +1,3 @@
-pip install --upgrade pip
-
 fastapi
 uvicorn
 pydantic
