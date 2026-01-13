@@ -7,12 +7,12 @@ langchain-mistralai==0.1.6
 
 # Vector database
 chromadb==0.5.3
-pypdf==4.3.1
+pypdf
 
 # Embeddings / NLP
 sentence-transformers==2.6.1
 huggingface-hub==0.23.2
-pypdf==4.2.0
+pypdf
 
 # API
 python-dotenv==1.0.1
