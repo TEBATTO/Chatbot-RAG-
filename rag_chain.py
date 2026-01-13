@@ -54,7 +54,7 @@ def get_rag_chain():
     # 3. Retriever optimisé pour la vitesse + pertinence
     retriever = vectorstore.as_retriever(
         search_type="similarity_score_threshold",
-        search_kwargs={"k": 4, "score_threshold": 0.4}
+        search_kwargs={"k": 3, "score_threshold": 0.45}
     )
 
     # 4. LLM Mistral (tu peux tester "open-mistral-nemo" pour + de vitesse)
