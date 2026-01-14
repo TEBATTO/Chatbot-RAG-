@@ -54,7 +54,7 @@ def get_rag_chain():
     # Retriever optimisé pour la vitesse
     retriever = vectorstore.as_retriever(
         search_type="similarity_score_threshold",
-        search_kwargs={"k": 4, "score_threshold": 0.35}  # Plus rapide que k=20
+        search_kwargs={"k": 4, "score_threshold": 0.45}
     )
 
     # LLM Mistral
