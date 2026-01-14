@@ -2,10 +2,10 @@ import os
 import shutil
 from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_chroma import Chroma  # Recommandée
+from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 
-EMBEDDING_MODEL = "intfloat/multilingual-e5-large"
+EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 BATCH_SIZE = 5000
 
 embeddings = HuggingFaceEmbeddings(
