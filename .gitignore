@@ -3,8 +3,6 @@
 .env.*
 
 # ===== Vectorstores / Chroma =====
-vectorstores/
-vectorstore/
 *.sqlite3
 
 # ===== HuggingFace / Transformers =====
@@ -36,5 +34,4 @@ Thumbs.db
 
 # Data & Vectorstores
 data/
-vectorstores/
 conversations/
