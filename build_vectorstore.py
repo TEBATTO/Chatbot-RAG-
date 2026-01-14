@@ -5,7 +5,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma  # Recommandée
 from langchain_huggingface import HuggingFaceEmbeddings
 
-EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+EMBEDDING_MODEL = "intfloat/multilingual-e5-large"
 BATCH_SIZE = 5000
 
 embeddings = HuggingFaceEmbeddings(
@@ -23,7 +23,7 @@ def build_vectorstore(data_dir: str, persist_dir: str):
     print(f"📄 Documents (pages) chargés : {len(documents)}")
 
     # Découpage
-    splitter = RecursiveCharacterTextSplitter(chunk_size=400, chunk_overlap=50)
+    splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=80)
     chunks = splitter.split_documents(documents)
     print(f"🧩 Chunks générés : {len(chunks)}")
 

@@ -1,5 +1,4 @@
 # api.py
-
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -13,9 +12,8 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# =========================
+
 # CORS (OBLIGATOIRE pour Django)
-# =========================
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],   # en prod → domaine Django uniquement
@@ -24,23 +22,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# =========================
+ 
 # Modèle d'entrée
-# =========================
 class Query(BaseModel):
     question: str
 
-
-# =========================
 # Health check (debug)
-# =========================
 @app.get("/")
 def health():
     return {"status": "API RAG opérationnelle"}
 
-# =========================
 # Endpoint chatbot
-# =========================
 @app.post("/chat")
 def chat(query: Query):
     """

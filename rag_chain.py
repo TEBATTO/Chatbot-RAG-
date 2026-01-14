@@ -1,5 +1,4 @@
 # rag_chain.py
-
 from dotenv import load_dotenv
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -28,9 +27,10 @@ if not Path(VECTORSTORE_DIR).exists() and not LOCK_FILE.exists():
     )
     LOCK_FILE.unlink()
 
-EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+EMBEDDING_MODEL = "intfloat/multilingual-e5-large"
 
 # Décommente la ligne ci-dessous pour passer à un modèle Mistral plus rapide
+# MODEL_NAME = "open-mistral-nemo"  # Très rapide, excellente qualité
 MODEL_NAME = "mistral-large-latest"  # Qualité maximale
 
 # LA plus grosse optimisation : tout est chargé une seule fois
@@ -38,26 +38,26 @@ MODEL_NAME = "mistral-large-latest"  # Qualité maximale
 def get_rag_chain():
     print("🔄 Chargement du RAG chain (première fois seulement)...")
 
-    # 1. Embeddings (lourds → chargés une seule fois)
+    # Embeddings (lourds → chargés une seule fois)
     embeddings = HuggingFaceEmbeddings(
         model_name=EMBEDDING_MODEL,
         model_kwargs={"device": "cpu"},
         encode_kwargs={"normalize_embeddings": True},
     )
 
-    # 2. Vectorstore (chargé une seule fois)
+    # Vectorstore (chargé une seule fois)
     vectorstore = Chroma(
         persist_directory=VECTORSTORE_DIR,
         embedding_function=embeddings
     )
 
-    # 3. Retriever optimisé pour la vitesse + pertinence
+    # Retriever optimisé pour la vitesse + pertinence
     retriever = vectorstore.as_retriever(
         search_type="similarity_score_threshold",
-        search_kwargs={"k": 3, "score_threshold": 0.45}
+        search_kwargs={"k": 10, "score_threshold": 0.35}  # Plus rapide que k=20
     )
 
-    # 4. LLM Mistral (tu peux tester "open-mistral-nemo" pour + de vitesse)
+    # LLM Mistral
     llm = ChatMistralAI(
         model=MODEL_NAME,
         temperature=0.3,
@@ -136,7 +136,6 @@ def get_rag_chain():
     return rag_chain
 
 # Fonction publique inchangée
-
 def ask_question(question: str):
     chain = get_rag_chain()
     result = chain.invoke({"input": question})
